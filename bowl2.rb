@@ -7,10 +7,12 @@ input_array.length.times do |i|
     input_array[i] = input_array[i].to_i
 end
 
+
 frame = 0
 max_frame = 10
 count = 0
 score = [0] * max_frame
+
 
 input_array.length.times do |i|
     unless frame + 1 == max_frame #during frame1 between frame9
