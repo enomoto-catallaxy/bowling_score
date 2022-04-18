@@ -1,3 +1,7 @@
+group :development do
+    gem 'rubocop-fjord', require: false
+end
+
 input_array = gets.split(",")
 
 input_array.length.times do |i|
@@ -8,23 +12,22 @@ input_array.length.times do |i|
 end
 
 
-frame = 0
 max_frame = 10
 count = 0
 score = [0] * max_frame
 
 
 input_array.length.times do |i|
-    unless frame + 1 == max_frame #during frame1 between frame9
+    if frame + 1 != max_frame #during frame1 between frame9
         if input_array[i] == 10
             if count == 0 # strike
                 count = 1
-                score[frame] = score[frame] + input_array[i] + input_array[i+1] + input_array[i+2]
+                score[frame] = 10 + input_array[i+1] + input_array[i+2]
             else # 0 - 10 spare
-                score[frame] = score[frame] + input_array[i] + input_array[i+1] 
+                score[frame] = 10 + input_array[i+1] 
             end
         elsif input_array[i] + score[frame] == 10 # other spare patterns
-            score[frame] = score[frame] + input_array[i] + input_array[i+1]
+            score[frame] = 10 + input_array[i+1]
         else
             score[frame] = score[frame] + input_array[i] 
         end
